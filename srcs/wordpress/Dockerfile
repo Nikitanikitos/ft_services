@@ -6,17 +6,34 @@
 #    By: imicah <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 20:27:57 by imicah            #+#    #+#              #
-#    Updated: 2020/09/05 22:11:41 by imicah           ###   ########.fr        #
+#    Updated: 2020/09/06 21:36:54 by imicah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM	alpine:3.7
 
 RUN		apk update && \
+		apk add openrc nginx bash vim \
+				php7 php7-fpm\
+				supervisor && \
+		rc-update add php-fpm7 default
 
-RUN		mkdir -p /var/www
+RUN		mkdir -p /run/nginx
+RUN		mkdir -p /var/run/php
 
-RUN		wget http://wordpress.org/latest.tar.gzi
-RUN		tar -xf latest.tar.gzi
-RUN		rm -rf latest.tar.gzi
-RUN		mv wordpress /var/www
+RUN		sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php7/php-fpm.conf
+
+COPY	src/default.conf		/etc/nginx/conf.d/default.conf
+COPY	src/supervisord.conf	/etc/supervisord.conf
+
+RUN		wget https://wordpress.org/latest.tar.gz
+RUN		tar -xf latest.tar.gz
+RUN		rm -rf latest.tar.gz
+RUN		mv wordpress /var/www/wordpress
+
+EXPOSE	9000
+
+CMD		["usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+
+#ENTRYPOINT	nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+

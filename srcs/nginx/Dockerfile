@@ -6,7 +6,7 @@
 #    By: imicah <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 20:26:49 by imicah            #+#    #+#              #
-#    Updated: 2020/09/06 15:35:19 by imicah           ###   ########.fr        #
+#    Updated: 2020/09/06 16:43:09 by imicah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ RUN			mkdir -p /var/run/sshd
 
 RUN			echo 'root:root' | chpasswd
 RUN			sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
-#RUN			sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 ENV			NOTVISIBLE "in users profile"
 RUN			echo "export VISIBLE=now" >> /etc/profile
 RUN			/usr/bin/ssh-keygen -A
