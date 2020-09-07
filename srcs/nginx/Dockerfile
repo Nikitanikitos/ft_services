@@ -6,7 +6,7 @@
 #    By: imicah <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 20:26:49 by imicah            #+#    #+#              #
-#    Updated: 2020/09/07 01:22:57 by imicah           ###   ########.fr        #
+#    Updated: 2020/09/07 16:51:36 by imicah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ ENV			NOTVISIBLE "in users profile"
 RUN			echo "export VISIBLE=now" >> /etc/profile
 RUN			/usr/bin/ssh-keygen -A
 
-COPY		src/supervisord/supervisord.conf	/etc/supervisord.conf
-COPY		src/default.conf					/etc/nginx/conf.d/default.conf
-COPY		src/snippets						/etc/nginx/snippets
-COPY		src/index.html						/var/www/index.html
-COPY		src/dhparam.pem						/etc/ssl/certs/dhparam.pem
+COPY		src/supervisord.conf	/etc/supervisord.conf
+COPY		src/default.conf		/etc/nginx/conf.d/default.conf
+COPY		src/snippets			/etc/nginx/snippets
+COPY		src/index.html			/var/www/index.html
+COPY		src/dhparam.pem			/etc/ssl/certs/dhparam.pem
 
 RUN			openssl req -new -newkey rsa:2048 -nodes -x509 -days 500 -subj \
 			/C=RU/ST=Moscow/L=Moscow/O=Companyname/OU=User/CN=localhost/emailAddress=support@site.com \
