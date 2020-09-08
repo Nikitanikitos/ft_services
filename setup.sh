@@ -1,19 +1,18 @@
+#!/bin/bash
 
 minikube start --vm-driver=virtualbox
 eval $(minikube docker-env) 
 
 minikube addons enable metallb
-minikube addons configure metallb
+kubectl apply -f srcs/minikube_confs/metallb-configmap.yaml
 
-#docker build srcs/nginx/Dockerfile -t		nginx-server
-#docker build srcs/phpmyadmin/Dockerfile -t	phpmyadmin
-#docker build srcs/wordpress/Dockerfile -t	wordpress
-#docker build srcs/mysq.Dockerfile -t		mysql
+#docker build srcs/nginx/ -t			nginx-image
+#docker build srcs/phpmyadmin/ -t	phpmyadmin-image
+docker build srcs/wordpress/ -t		wordpress-image
+docker build srcs/mysq -t			mysql-image
 
-kubectl create -f srcs/nginx.yaml
-kubectl create -f srcs/service.yaml
-
-#docker run -p 5050:5050 --name wordpress wordpress
-#docker run -p 5000:5000 --name phpmyadmin phpmyadmin
-#docker run -p 80:80 -p 443:443 -p 2222:22 --name nginx-server nginx-server
+kubectl apply -f srcs/minikube_confs/wordpress.yaml
+kubectl apply -f srcs/minikube_confs/mysql.yaml
+#kubectl apply -f srcs/minikube_confs/phpmyadmin.yaml
+#kubectl apply -f srcs/minikube_confs/nginx.yaml
 
