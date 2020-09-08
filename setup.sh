@@ -1,25 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    setup.sh                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: imicah <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/05 20:24:16 by imicah            #+#    #+#              #
-#    Updated: 2020/09/07 20:08:27 by imicah           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-minikube start
-eval $(minikube docker-env) # не забыть проверить нужно ли
+minikube start --vm-driver=virtualbox
+eval $(minikube docker-env) 
 
 minikube addons enable metallb
 minikube addons configure metallb
 
-docker build srcs/nginx/Dockerfile -t		nginx-server
-docker build srcs/phpmyadmin/Dockerfile -t	phpmyadmin
-docker build srcs/wordpress/Dockerfile -t	wordpress
-docker build srcs/mysq.Dockerfile -t		mysql
+#docker build srcs/nginx/Dockerfile -t		nginx-server
+#docker build srcs/phpmyadmin/Dockerfile -t	phpmyadmin
+#docker build srcs/wordpress/Dockerfile -t	wordpress
+#docker build srcs/mysq.Dockerfile -t		mysql
 
 kubectl create -f srcs/nginx.yaml
 kubectl create -f srcs/service.yaml

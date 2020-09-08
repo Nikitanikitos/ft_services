@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
 spec:
   selector:
     matchLabels:
@@ -12,13 +12,10 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image: nginx-container
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 443
-              protocol: TCP
-            - containerPort: 80
-              protocol: TCP
-            - containerPort: 22
-              protocol: TCP
+      - name: nginx
+        image: nginx-image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+        - containerPort: 22
