@@ -11,12 +11,19 @@ spec:
       labels:
         app: influxdb
     spec:
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
       containers:
       - name: influxdb
         image: influxdb-image
         imagePullPolicy: Never
         ports:
-        - containerPort: 8806
+        - containerPort: 8086
+        volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock
 ---
 apiVersion: v1
 kind: Service
@@ -28,5 +35,6 @@ spec:
     app: influxdb
   ports:
   - protocol: TCP
-    port: 8806
-    targetPort: 8806
+    port: 8086
+    targetPort: 8086
+
