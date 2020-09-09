@@ -25,7 +25,7 @@ RUN		rc default && /etc/init.d/mariadb setup
 
 #RUN		mysql -u root < config.sql
 
-EXPOSE	80
+EXPOSE	3306
 
 ENTRYPOINT	usr/bin/mysqld_safe
 

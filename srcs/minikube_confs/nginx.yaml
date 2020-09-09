@@ -41,4 +41,3 @@ spec:
       name: port-ssh
       protocol: TCP
       targetPort: 22
-

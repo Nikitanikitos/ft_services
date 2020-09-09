@@ -9,7 +9,7 @@ kubectl apply -f srcs/minikube_confs/metallb-configmap.yaml
 #docker build srcs/nginx/ -t			nginx-image
 #docker build srcs/phpmyadmin/ -t	phpmyadmin-image
 docker build srcs/wordpress/ -t		wordpress-image
-docker build srcs/mysq -t			mysql-image
+docker build srcs/mysql -t			mysql-image
 
 kubectl apply -f srcs/minikube_confs/wordpress.yaml
 kubectl apply -f srcs/minikube_confs/mysql.yaml
