@@ -31,5 +31,6 @@ RUN		cd telegraf-1.15.2/usr/bin && ./telegraf -sample-config --input-filter dock
 
 COPY	src/supervisord.conf	/etc/supervisord.conf
 
-CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+VOLUME	["/var/lib"]
 
+CMD		["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

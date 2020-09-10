@@ -39,4 +39,3 @@ RUN			openssl req -new -newkey rsa:2048 -nodes -x509 -days 500 -subj \
 EXPOSE		22 80 443
 
 CMD			["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-
