@@ -6,7 +6,7 @@
 #    By: imicah <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/05 20:27:46 by imicah            #+#    #+#              #
-#    Updated: 2020/09/07 01:21:18 by imicah           ###   ########.fr        #
+#    Updated: 2020/09/10 23:29:39 by imicah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ RUN		mkdir -p /var/run/php
 
 RUN		sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php7/php-fpm.conf
 RUN		sed -i 's/;   extension=msql.so/extension=mysqli.so/g' /etc/php7/php.ini
-
+RUN		sed -i 's/$cfg['Servers'][$i]['host'] = 'localhost'; \
+				/$cfg['Servers'][$i]['host'] = 'http://mysql-svc:3306';/g' /var/www/phpmyadmin/config.sample.inc.php
 
 COPY	src/phpmyadmin.conf		/etc/nginx/conf.d/phpmyadmin.conf
 COPY	src/supervisord.conf	/etc/supervisord.conf
