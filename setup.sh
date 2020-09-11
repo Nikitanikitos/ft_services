@@ -33,3 +33,4 @@ printf "\n"
 
 printf "URL influx: http://influxdb-svc:8086\n"
 printf "URL mysql: http://mysql-svc:3306\n"
+

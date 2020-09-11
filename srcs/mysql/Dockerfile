@@ -16,14 +16,13 @@ RUN		apk update && \
 		apk add mysql mysql-client \
 		 		vim bash openrc
 
-COPY	src/my.cnf		/etc/mysql/my.cnf
+COPY	src/my.cnf			/etc/mysql/my.cnf
+COPY	src/start.sh		start.sh
+COPY	src/wordpress.sql	wordpress.sql
 
 VOLUME	["sys/fs/cgroup"]
 VOLUME	["/var/lib/mysql"]
 
-#RUN		rc default && /etc/init.d/mariadb setup
-
 EXPOSE	3306
 
-ENTRYPOINT	rc default && /etc/init.d/mariadb setup && /usr/bin/mysqld_safe
-
+ENTRYPOINT	./start.sh
