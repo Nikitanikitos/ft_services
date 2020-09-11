@@ -12,7 +12,7 @@
 
 FROM	alpine:3.7
 
-RUN		apk update && apk add bash vim
+RUN		apk update
 
 RUN		apk add --update supervisor ca-certificates && rm -rf /var/cache/apk/*
 RUN		wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub

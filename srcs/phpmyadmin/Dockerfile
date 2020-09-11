@@ -13,10 +13,10 @@
 FROM	alpine:3.7
 
 RUN		apk update && \
-		apk add openrc nginx bash vim openssl\
+		apk add openrc nginx openssl supervisor \
 				php7 php7-mysqli php7-session php7-fpm php7-json php7-phar php7-iconv php7-mbstring \
-				supervisor && \
-		rc-update add php-fpm7 default
+
+RUN		rc-update add php-fpm7 default
 
 RUN		mkdir -p /run/nginx
 RUN		mkdir -p /var/run/php

@@ -13,9 +13,7 @@
 FROM		alpine:3.7
 
 RUN			apk update && \
-			apk add openssl nginx \
-					openrc supervisor \
-					bash vim openssh
+			apk add openssl nginx openrc supervisor openssh
 
 RUN			mkdir -p /run/nginx
 RUN			mkdir -p /var/run/sshd
