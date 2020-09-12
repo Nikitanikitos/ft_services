@@ -11,7 +11,7 @@ kubectl apply -f srcs/minikube_confs/metallb-configmap.yaml
 for service in "${services[@]}"
 do
 printf "docker build ${service}: "
-docker build srcs/${service} -t "${service}-image" > /dev/null
+docker build srcs/${service} -t "${service}-image" > /dev/null 2 > error.log
 printf "status - OK\n"
 done
 
@@ -33,4 +33,3 @@ printf "\n"
 
 printf "URL influx: http://influxdb-svc:8086\n"
 printf "URL mysql: http://mysql-svc:3306\n"
-

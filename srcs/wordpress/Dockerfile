@@ -13,9 +13,8 @@
 FROM	alpine:3.7
 
 RUN		apk update && \
-		apk add openrc nginx supervisor \
-				php7 php7-fpm php7-json php7-mysqli \
-				mysql mysql-client
+		apk add openrc nginx supervisor mysql mysql-client \
+				php7 php7-fpm php7-json php7-mysqli
 
 RUN		rc-update add php-fpm7 default
 

@@ -38,4 +38,3 @@ COPY	src/config.inc.php		/var/www/phpmyadmin/config.inc.php
 EXPOSE	9000 5000
 
 CMD		["usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-

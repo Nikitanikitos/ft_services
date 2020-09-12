@@ -12,14 +12,13 @@
 
 FROM	alpine:3.7
 
-RUN		apk update \
-		&& apk add openssl vsftpd openrc
+RUN		apk update && apk add openssl vsftpd openrc
 	
 RUN		openssl req -x509 -nodes -days 365 -newkey rsa:1024 -subj \
 		/C=RU/ST=Moscow/L=Moscow/O=Companyname/OU=User/CN=localhost/emailAddress=support@site.com \
 		-keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
 
-RUN			echo 'root:root' | chpasswd
+RUN		echo 'root:root' | chpasswd
 
 VOLUME	["sys/fs/cgroup"]
 
