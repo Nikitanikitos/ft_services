@@ -1,6 +1,6 @@
 #!/bin/bash
 
-services=("nginx" "phpmyadmin" "wordpress" "mysql" "influx" "grafana")
+services=("nginx" "phpmyadmin" "wordpress" "mysql" "influx" "grafana", "ftps")
 
 minikube start --vm-driver=virtualbox
 eval $(minikube docker-env) > /dev/null

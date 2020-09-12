@@ -12,8 +12,8 @@ spec:
         app: ftps
     spec:
       containers:
-      - name: grafana
-        image: grafana-image
+      - name: ftps
+        image: ftps-image
         imagePullPolicy: Never
         ports:
         - containerPort: 21
@@ -34,6 +34,6 @@ spec:
     protocol: TCP
     targetPort: 21
   - port: 10100
-    name: port-http
+    name: port-passv
     protocol: TCP
     targetPort: 10100
