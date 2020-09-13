@@ -20,7 +20,7 @@ COPY	src/start.sh		start.sh
 COPY	src/wordpress.sql	wordpress.sql
 
 VOLUME	["sys/fs/cgroup"]
-VOLUME	["/var/lib/mysql"]
+VOLUME	["/var/lib"]
 
 EXPOSE	3306
 
