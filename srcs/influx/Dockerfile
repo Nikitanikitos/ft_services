@@ -17,4 +17,3 @@ RUN		apk update && apk add influxdb
 VOLUME		["/var/lib/"]
 
 ENTRYPOINT	influxd -config /etc/influxdb.conf
-
