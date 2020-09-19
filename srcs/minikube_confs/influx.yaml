@@ -29,9 +29,9 @@ spec:
       - name: influx-storage
         persistentVolumeClaim:
           claimName: influx-claim
-      - name: dockersock
-        hostPath:
-          path: /var/run/docker.sock
+      # - name: dockersock
+      #   hostPath:
+      #     path: /var/run/docker.sock
       containers:
       - name: influx
         image: influx-image
@@ -39,8 +39,8 @@ spec:
         ports:
         - containerPort: 8086
         volumeMounts:
-        - name: dockersock
-          mountPath: /var/run/docker.sock
+        # - name: dockersock
+        #   mountPath: /var/run/docker.sock
         - name: influx-storage
           mountPath: /var/lib/
 ---
