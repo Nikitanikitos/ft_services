@@ -11,7 +11,7 @@ kubectl apply -f srcs/minikube_confs/metallb-configmap.yaml
 for service in "${services[@]}"
 do
 echo -en "\033[1mdocker build ${service}: "
-if docker build srcs/${service} -t "${service}-image" 1> defult.log 2> error.log
+if docker build srcs/${service} -t "${service}-image" 1> default.log 2> error.log
 then
 echo -en "status - \033[32m OK \033[0m \033[1m \n"
 else
